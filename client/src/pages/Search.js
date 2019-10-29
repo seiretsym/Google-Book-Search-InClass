@@ -1,7 +1,7 @@
-import Jumbotron from "../components/Jumbotron";
+import React, { Component } from "react"
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import Card from "./components/Card";
+import Card from "../components/Card";
 
 class Search extends Component {
   state = {
@@ -13,20 +13,23 @@ class Search extends Component {
     this.loadSearchResults();
   }
 
+  loadSearchResults = () => {
+
+  }
   
   loadBooks = () => {
-    API.googleThis(searchTerm)
+    API.googleThis(this.state.searchTerm)
       .then(res =>
         this.setState({
             books: res.items.map(book => {
-                let book = {
+                let item = {
                     title: book.volumeInfo.title,
                     author: book.volumeInfo.authors,
                     description: book.volumeInfo.description,
                     thumbnail: book.volumeInfo.imageLinks.thumbnail,
                     link: book.volumeInfo.infoLink
                 }
-                return book;
+                return item;
             })})
       )
       .catch(err => console.log(err));
@@ -35,15 +38,7 @@ class Search extends Component {
   render() {
     return (
       <div className="container-fluid">
-          <Card 
-            value={this.state.title}
-            name={this.state.authors}
-            description={this.state.description}
-            href={this.state.link}
-            />
-
-        
-        
+          <Card />
       </div>
 
     )

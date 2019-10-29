@@ -3,11 +3,10 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Card from "./components/Card";
-import Container from "./components/Container";
 import Jumbotron from "./components/Jumbotron";
 import Navbar from "./components/Navbar";
-
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
 
 
 class App extends Component {
@@ -15,13 +14,12 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <Nav />
+          <Navbar />
           <Jumbotron />
           <Switch>
             <Route exact path="/" component={Search} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
-            <Route exact path="saved/:id" component={View} />
           </Switch>
         </div>
       </Router>
