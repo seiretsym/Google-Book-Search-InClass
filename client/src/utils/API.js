@@ -1,10 +1,9 @@
 import axios from "axios";
-const APIKEY = process.env.REACT_APP_API_KEY;
 
 export default {
     // search google books for books
     googleThis: function(query) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + APIKEY)
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + process.env.REACT_APP_API_KEY)
     },
 
     // server side
