@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
     // search google books for books
     googleThis: function(query) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + process.env.REACT_APP_API_KEY)
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + process.env.API_KEY)
     },
 
     // server side
