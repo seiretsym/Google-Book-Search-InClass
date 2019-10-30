@@ -5,8 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "client": "npm run start --prefix client",
     "heroku-postbuild": "cd client/ && npm install --only=dev && NODE_ENV=development npm install --no-shrinkwrap && npm run build"
   },
@@ -16,9 +14,7 @@
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "mongoose": "^5.7.7",
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+    "mongoose": "^5.7.7"
   },
     "engines": {
     "npm": "6.10.3",
