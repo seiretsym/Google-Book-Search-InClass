@@ -1,5 +1,5 @@
 import axios from "axios";
-const APIKEY = process.env.APIKEY;
+const APIKEY = process.env.REACT_APP_API_KEY;
 
 export default {
     // search google books for books
