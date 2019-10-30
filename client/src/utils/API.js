@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
     // search google books for books
-    googleThis: function(query, key) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + key)
+    googleThis: function(query) {
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=AIzaSyCLMQbXTUQcMYFYYHY5aStpTL8J9TzxIIY")
     },
 
     // server side

@@ -28,7 +28,7 @@ class Search extends Component {
   };
 
   loadBooks = () => {
-    API.googleThis(this.state.searchTerm, process.env.REACT_APP_API_KEY)
+    API.googleThis(this.state.searchTerm)
       .then(res => {
         this.setState({
           books: res.data.items.map(book => {
