@@ -3,54 +3,42 @@ import React from "react";
 function Card(props) {
   if (props.view === "saved") {
     return (
-      <div className="card">
-        <div className="img-container">
-          <img alt={props.name} src={props.image}></img>
-        </div>
-        <div className="content">
-          <ul>
-            <li>
-              <strong>Title:</strong> {props.title}
+      <div className="card mb-3">
+        <div className="img-container p-3">
+          <img alt={props.title} src={props.image} className="float-left mr-3"/>
+          <ul className="list-group ml-3">
+            <li className="list-group-item active bg-danger">
+              <strong>{props.title}</strong> by <strong>{props.author}</strong>
+              <button onClick={() => props.bookDelete(props.id)} className="save">&times;</button>
             </li>
-            <li>
-              <strong>Author:</strong> {props.author}
+            <li className="list-group-item">
+              <strong>Synopsis:</strong> {props.description}
             </li>
-            <li>
-              <strong>Description:</strong> {props.description}
-            </li>
-            <li>
-              <strong>Link:</strong> <a href={props.link}>{props.link}</a>
+            <li className="list-group-item">
+              <strong>Source:</strong> <a href={props.link}>Google Books</a>
             </li>
           </ul>
         </div>
-        <span onClick={() => props.bookDelete(props.id)} className="delete">
-          𝘅
-        </span>
       </div>
     );
   } else {
     return (
-      <div className="card">
-        <div className="img-container">
-          <img alt={props.name} src={props.image} />
-        </div>
-        <div className="content">
-          <ul>
-            <li>
-              <strong>Title:</strong> {props.title}
+      <div className="card mb-3">
+        <div className="img-container p-3">
+          <img alt={props.title} src={props.image} className="float-left mr-3"/>
+          <ul className="list-group ml-3">
+            <li className="list-group-item active bg-danger">
+              <strong>{props.title}</strong> by <strong>{props.author}</strong>
+              <button onClick={() => props.bookSave(props.id)} className="save">★</button>
             </li>
-            <li>
-              <strong>Author:</strong> {props.author}
+            <li className="list-group-item">
+              <strong>Synopsis:</strong> {props.description}
             </li>
-            <li>
-              <strong>Description:</strong> {props.description}
-            </li>
-            <li>
-              <strong>href:</strong> {props.link}
+            <li className="list-group-item">
+              <strong>Source:</strong> <a href={props.link}>Google Books</a>
             </li>
           </ul>
         </div>
-        <span onClick={() => props.bookSave(props.id)} className="save"> o </span>
       </div>
     );
   }

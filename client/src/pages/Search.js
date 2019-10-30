@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import Form from "../components/Form";
 
@@ -33,11 +32,12 @@ class Search extends Component {
       .then(res => {
         this.setState({
           books: res.data.items.map(book => {
+            console.log(book)
             let item = {
               title: book.volumeInfo.title,
-              author: book.volumeInfo.authors,
-              description: book.volumeInfo.description,
-              thumbnail: book.volumeInfo.imageLinks.thumbnail,
+              author: book.volumeInfo.authors.join(", "),
+              description: book.searchInfo.textSnippet,
+              image: book.volumeInfo.imageLinks.thumbnail,
               link: book.volumeInfo.infoLink
             }
             return item;
@@ -47,19 +47,21 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
-  saveBook = id => {
-    API.saveBook(id)
+  saveBook = i => {
+    API.saveBook(this.state.books[i])
   }
 
   render() {
     return (
-      <div className="container-fluid">
+      <div>
         <Form
           value={this.state.searchTerm}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
-          />
-          {this.state.books.map(book => {
+        />
+        <div className="bg-search p-3">
+        <div className="m-0 p-0"><strong>Search Results:</strong></div>
+          {this.state.books.map((book, index) => {
             return (
               <Card
                 name={book.title}
@@ -70,15 +72,15 @@ class Search extends Component {
                 id={book._id}
                 image={book.image}
                 key={book._id}
-                view="saved"
-                bookSave={() => this.saveBook(book._id)}
+                view="search"
+                bookSave={() => this.saveBook(index)}
               />
             )
           })}
         </div>
+      </div>
+    )
+  }
+}
 
-        )
-      }
-    }
-    
 export default Search

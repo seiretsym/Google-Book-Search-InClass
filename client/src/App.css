@@ -22,3 +22,38 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.save {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  font-size: x-large;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0px;
+  color: white;
+}
+
+.searchBox {
+  border: none;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.searchButton {
+  border: non;
+  border-radius: 0px 10px 10px 0px;
+}
+
+button, input {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.jumbotron {
+  border-radius: 0px !important;
+}
+
+.bg-search {
+  background-color: #eeeeee;
+}

@@ -14,23 +14,29 @@ class Saved extends Component {
 
   getBooks = () => {
     API.getBooks()
-    .then(data => {
-      this.setState({
-        books: data
+      .then(books => {
+        if (books.data.length > 0 ) {
+          this.setState({
+            books: books.data
+          })
+        } else {
+          this.setState({books: []})
+        }
       })
-    })
   }
 
   deleteBook = id => {
-    API.deleteBook(id).then(() => this.getBooks)
+    API.deleteBook(id).then(() => this.getBooks())
   }
 
-    render() {
-      return (
-        <div className="container-fluid">
-          {this.state.books.map(book => {
+  render() {
+    return (
+      <div>
+        <div className="bg-search p-3">
+        <div className="m-0 p-0"><strong>Saved Books:</strong></div>
+          {this.state.books.map((book, index) => {
             return (
-              <Card 
+              <Card
                 name={book.title}
                 title={book.title}
                 author={book.author}
@@ -40,14 +46,14 @@ class Saved extends Component {
                 image={book.image}
                 key={book._id}
                 view="saved"
-                bookDelete={this.deleteBook(book._id)}
+                bookDelete={() => this.deleteBook(book._id)}
               />
             )
           })}
         </div>
-  
-      )
-    }
+      </div>
+    )
   }
-  
-  export default Saved
+}
+
+export default Saved
