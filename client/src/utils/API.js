@@ -1,9 +1,10 @@
 import axios from "axios";
+const APIKEY = process.env.APIKEY;
 
 export default {
     // search google books for books
     googleThis: function(query) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + process.env.APIKEY)
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + APIKEY)
     },
 
     // server side
