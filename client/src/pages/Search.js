@@ -32,11 +32,10 @@ class Search extends Component {
       .then(res => {
         this.setState({
           books: res.data.items.map(book => {
-            console.log(book)
             let item = {
               title: book.volumeInfo.title,
               author: book.volumeInfo.authors.join(", "),
-              description: book.searchInfo.textSnippet,
+              description: book.volumeInfo.description,
               image: book.volumeInfo.imageLinks.thumbnail,
               link: book.volumeInfo.infoLink
             }
